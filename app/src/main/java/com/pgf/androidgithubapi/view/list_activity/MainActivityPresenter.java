@@ -1,4 +1,4 @@
-package com.pgf.androidgithubapi.view;
+package com.pgf.androidgithubapi.view.list_activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;

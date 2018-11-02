@@ -1,6 +1,7 @@
-package com.pgf.androidgithubapi.view;
+package com.pgf.androidgithubapi.view.list_activity;
 
-import android.content.ClipData;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -8,10 +9,13 @@ import android.widget.Toast;
 import com.pgf.androidgithubapi.R;
 import com.pgf.androidgithubapi.model.ItemsItem;
 import com.pgf.androidgithubapi.model.RepoListResponse;
+import com.pgf.androidgithubapi.view.detail_activity.DetailActivity;
 
 import java.util.ArrayList;
 
 public class MainActivityView implements OnRepoItemClickListener {
+
+    private static final String REPO_INTENT_KEY = "REPO_INTENT_KEY";
 
     MainActivity activity;
     ArrayList<ItemsItem> repoList;
@@ -48,6 +52,8 @@ public class MainActivityView implements OnRepoItemClickListener {
     @Override
     public void onItemClick(int position) {
 
-        Toast.makeText(activity, "click " + position, Toast.LENGTH_SHORT).show();
+        Intent gotoDetailIntent = new Intent(activity, DetailActivity.class);
+        gotoDetailIntent.putExtra(REPO_INTENT_KEY, repoList.get(position));
+        activity.startActivity(gotoDetailIntent);
     }
 }

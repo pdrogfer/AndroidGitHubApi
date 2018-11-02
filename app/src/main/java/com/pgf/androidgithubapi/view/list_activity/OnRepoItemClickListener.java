@@ -1,4 +1,4 @@
-package com.pgf.androidgithubapi.view;
+package com.pgf.androidgithubapi.view.list_activity;
 
 public interface OnRepoItemClickListener {
 
