@@ -1,8 +1,7 @@
-package com.pgf.androidgithubapi;
+package com.pgf.androidgithubapi.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.pgf.androidgithubapi.api.AppDataSourceImplCloud;
 import com.pgf.androidgithubapi.api.AppRepository;
@@ -27,16 +26,17 @@ public class MainActivityPresenter {
         view = new MainActivityView(mainActivity);
         repository = new AppRepositoryImpl(new AppDataSourceImplCloud());
 
-        initUi();
         loadData();
     }
 
     public void onCreate() {
 
+        initUi();
     }
 
     private void initUi() {
 
+        view.initUi();
     }
 
     private void loadData() {
