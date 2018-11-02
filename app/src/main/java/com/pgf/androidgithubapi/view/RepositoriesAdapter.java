@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
 import com.pgf.androidgithubapi.R;
@@ -16,8 +18,11 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapte
 
     private ArrayList<ItemsItem> reposList;
 
-    public RepositoriesAdapter(ArrayList<ItemsItem> reposList) {
+    private OnRepoItemClickListener itemClickListener;
+
+    public RepositoriesAdapter(ArrayList<ItemsItem> reposList, OnRepoItemClickListener repoItemClickListener) {
         this.reposList = reposList;
+        itemClickListener = repoItemClickListener;
     }
 
     @NonNull
@@ -29,11 +34,20 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RepositoryViewHolder repositoryViewHolder, int position) {
+    public void onBindViewHolder(@NonNull RepositoryViewHolder repositoryViewHolder, final int position) {
 
         ItemsItem repo = reposList.get(position);
 
         repositoryViewHolder.tvRepoTitle.setText(repo.getName());
+
+        repositoryViewHolder.itemRootView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                itemClickListener.onItemClick(position);
+            }
+        });
     }
 
     @Override
@@ -43,14 +57,15 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesAdapte
 
     public class RepositoryViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout itemRootView;
         TextView tvRepoTitle;
 
         public RepositoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            itemRootView = itemView.findViewById(R.id.item_repo_root);
             tvRepoTitle = itemView.findViewById(R.id.item_repo_title);
         }
-
-
     }
 }
+

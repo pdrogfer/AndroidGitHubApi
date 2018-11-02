@@ -11,7 +11,7 @@ import com.pgf.androidgithubapi.model.RepoListResponse;
 
 import java.util.ArrayList;
 
-public class MainActivityView {
+public class MainActivityView implements OnRepoItemClickListener {
 
     MainActivity activity;
     ArrayList<ItemsItem> repoList;
@@ -27,12 +27,12 @@ public class MainActivityView {
     public void paintData(RepoListResponse repoListResponse) {
 
         repoList = (ArrayList<ItemsItem>) repoListResponse.getItems();
-        repositoriesAdapter = new RepositoriesAdapter(repoList);
+        repositoriesAdapter = new RepositoriesAdapter(repoList, this);
 
         rvRepositoriesList.setLayoutManager(new LinearLayoutManager(activity));
         rvRepositoriesList.setAdapter(repositoriesAdapter);
 
-        Toast.makeText(activity, "first repo name " + repoList.get(0).getName() , Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity, "first repo name " + repoList.get(0).getName(), Toast.LENGTH_SHORT).show();
     }
 
     public void showMessage(String message) {
@@ -43,5 +43,11 @@ public class MainActivityView {
     public void initUi() {
 
         rvRepositoriesList = activity.findViewById(R.id.rv_repositories_list);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+        Toast.makeText(activity, "click " + position, Toast.LENGTH_SHORT).show();
     }
 }
