@@ -1,10 +1,13 @@
 package com.pgf.androidgithubapi.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import javax.annotation.Generated;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ItemsItem {
+public class ItemsItem implements Parcelable {
 
     @SerializedName("stargazers_count")
     private int stargazersCount;
@@ -28,7 +31,7 @@ public class ItemsItem {
     private String labelsUrl;
 
     @SerializedName("score")
-    private int score;
+    private double score;
 
     @SerializedName("subscribers_url")
     private String subscribersUrl;
@@ -187,7 +190,7 @@ public class ItemsItem {
     private String contentsUrl;
 
     @SerializedName("mirror_url")
-    private Object mirrorUrl;
+    private String mirrorUrl;
 
     @SerializedName("milestones_url")
     private String milestonesUrl;
@@ -281,11 +284,11 @@ public class ItemsItem {
         return labelsUrl;
     }
 
-    public void setScore(int score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -705,11 +708,11 @@ public class ItemsItem {
         return contentsUrl;
     }
 
-    public void setMirrorUrl(Object mirrorUrl) {
+    public void setMirrorUrl(String mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
-    public Object getMirrorUrl() {
+    public String getMirrorUrl() {
         return mirrorUrl;
     }
 
@@ -888,4 +891,177 @@ public class ItemsItem {
                         ",forks_count = '" + forksCount + '\'' +
                         "}";
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.stargazersCount);
+        dest.writeString(this.pushedAt);
+        dest.writeString(this.subscriptionUrl);
+        dest.writeString(this.language);
+        dest.writeString(this.branchesUrl);
+        dest.writeString(this.issueCommentUrl);
+        dest.writeString(this.labelsUrl);
+        dest.writeDouble(this.score);
+        dest.writeString(this.subscribersUrl);
+        dest.writeString(this.releasesUrl);
+        dest.writeString(this.svnUrl);
+        dest.writeInt(this.id);
+        dest.writeInt(this.forks);
+        dest.writeString(this.archiveUrl);
+        dest.writeString(this.gitRefsUrl);
+        dest.writeString(this.forksUrl);
+        dest.writeString(this.statusesUrl);
+        dest.writeString(this.sshUrl);
+        dest.writeParcelable(this.license, flags);
+        dest.writeString(this.fullName);
+        dest.writeInt(this.size);
+        dest.writeString(this.languagesUrl);
+        dest.writeString(this.htmlUrl);
+        dest.writeString(this.collaboratorsUrl);
+        dest.writeString(this.cloneUrl);
+        dest.writeString(this.name);
+        dest.writeString(this.pullsUrl);
+        dest.writeString(this.defaultBranch);
+        dest.writeString(this.hooksUrl);
+        dest.writeString(this.treesUrl);
+        dest.writeString(this.tagsUrl);
+        dest.writeByte(this.jsonMemberPrivate ? (byte) 1 : (byte) 0);
+        dest.writeString(this.contributorsUrl);
+        dest.writeByte(this.hasDownloads ? (byte) 1 : (byte) 0);
+        dest.writeString(this.notificationsUrl);
+        dest.writeInt(this.openIssuesCount);
+        dest.writeString(this.description);
+        dest.writeString(this.createdAt);
+        dest.writeInt(this.watchers);
+        dest.writeString(this.keysUrl);
+        dest.writeString(this.deploymentsUrl);
+        dest.writeByte(this.hasProjects ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.archived ? (byte) 1 : (byte) 0);
+        dest.writeByte(this.hasWiki ? (byte) 1 : (byte) 0);
+        dest.writeString(this.updatedAt);
+        dest.writeString(this.commentsUrl);
+        dest.writeString(this.stargazersUrl);
+        dest.writeString(this.gitUrl);
+        dest.writeByte(this.hasPages ? (byte) 1 : (byte) 0);
+        dest.writeParcelable(this.owner, flags);
+        dest.writeString(this.commitsUrl);
+        dest.writeString(this.compareUrl);
+        dest.writeString(this.gitCommitsUrl);
+        dest.writeString(this.blobsUrl);
+        dest.writeString(this.gitTagsUrl);
+        dest.writeString(this.mergesUrl);
+        dest.writeString(this.downloadsUrl);
+        dest.writeByte(this.hasIssues ? (byte) 1 : (byte) 0);
+        dest.writeString(this.url);
+        dest.writeString(this.contentsUrl);
+        dest.writeString(this.mirrorUrl);
+        dest.writeString(this.milestonesUrl);
+        dest.writeString(this.teamsUrl);
+        dest.writeByte(this.fork ? (byte) 1 : (byte) 0);
+        dest.writeString(this.issuesUrl);
+        dest.writeString(this.eventsUrl);
+        dest.writeString(this.issueEventsUrl);
+        dest.writeString(this.assigneesUrl);
+        dest.writeInt(this.openIssues);
+        dest.writeInt(this.watchersCount);
+        dest.writeString(this.nodeId);
+        dest.writeString(this.homepage);
+        dest.writeInt(this.forksCount);
+    }
+
+    public ItemsItem() {
+    }
+
+    protected ItemsItem(Parcel in) {
+        this.stargazersCount = in.readInt();
+        this.pushedAt = in.readString();
+        this.subscriptionUrl = in.readString();
+        this.language = in.readString();
+        this.branchesUrl = in.readString();
+        this.issueCommentUrl = in.readString();
+        this.labelsUrl = in.readString();
+        this.score = in.readDouble();
+        this.subscribersUrl = in.readString();
+        this.releasesUrl = in.readString();
+        this.svnUrl = in.readString();
+        this.id = in.readInt();
+        this.forks = in.readInt();
+        this.archiveUrl = in.readString();
+        this.gitRefsUrl = in.readString();
+        this.forksUrl = in.readString();
+        this.statusesUrl = in.readString();
+        this.sshUrl = in.readString();
+        this.license = in.readParcelable(License.class.getClassLoader());
+        this.fullName = in.readString();
+        this.size = in.readInt();
+        this.languagesUrl = in.readString();
+        this.htmlUrl = in.readString();
+        this.collaboratorsUrl = in.readString();
+        this.cloneUrl = in.readString();
+        this.name = in.readString();
+        this.pullsUrl = in.readString();
+        this.defaultBranch = in.readString();
+        this.hooksUrl = in.readString();
+        this.treesUrl = in.readString();
+        this.tagsUrl = in.readString();
+        this.jsonMemberPrivate = in.readByte() != 0;
+        this.contributorsUrl = in.readString();
+        this.hasDownloads = in.readByte() != 0;
+        this.notificationsUrl = in.readString();
+        this.openIssuesCount = in.readInt();
+        this.description = in.readString();
+        this.createdAt = in.readString();
+        this.watchers = in.readInt();
+        this.keysUrl = in.readString();
+        this.deploymentsUrl = in.readString();
+        this.hasProjects = in.readByte() != 0;
+        this.archived = in.readByte() != 0;
+        this.hasWiki = in.readByte() != 0;
+        this.updatedAt = in.readString();
+        this.commentsUrl = in.readString();
+        this.stargazersUrl = in.readString();
+        this.gitUrl = in.readString();
+        this.hasPages = in.readByte() != 0;
+        this.owner = in.readParcelable(Owner.class.getClassLoader());
+        this.commitsUrl = in.readString();
+        this.compareUrl = in.readString();
+        this.gitCommitsUrl = in.readString();
+        this.blobsUrl = in.readString();
+        this.gitTagsUrl = in.readString();
+        this.mergesUrl = in.readString();
+        this.downloadsUrl = in.readString();
+        this.hasIssues = in.readByte() != 0;
+        this.url = in.readString();
+        this.contentsUrl = in.readString();
+        this.mirrorUrl = in.readString();
+        this.milestonesUrl = in.readString();
+        this.teamsUrl = in.readString();
+        this.fork = in.readByte() != 0;
+        this.issuesUrl = in.readString();
+        this.eventsUrl = in.readString();
+        this.issueEventsUrl = in.readString();
+        this.assigneesUrl = in.readString();
+        this.openIssues = in.readInt();
+        this.watchersCount = in.readInt();
+        this.nodeId = in.readString();
+        this.homepage = in.readString();
+        this.forksCount = in.readInt();
+    }
+
+    public static final Parcelable.Creator<ItemsItem> CREATOR = new Parcelable.Creator<ItemsItem>() {
+        @Override
+        public ItemsItem createFromParcel(Parcel source) {
+            return new ItemsItem(source);
+        }
+
+        @Override
+        public ItemsItem[] newArray(int size) {
+            return new ItemsItem[size];
+        }
+    };
 }
