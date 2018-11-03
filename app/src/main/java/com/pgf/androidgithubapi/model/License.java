@@ -1,10 +1,13 @@
 package com.pgf.androidgithubapi.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import javax.annotation.Generated;
 
 import com.google.gson.annotations.SerializedName;
 
-public class License {
+public class License implements Parcelable {
 
     @SerializedName("name")
     private String name;
@@ -72,4 +75,41 @@ public class License {
                         ",node_id = '" + nodeId + '\'' +
                         "}";
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.spdxId);
+        dest.writeString(this.key);
+        dest.writeString(this.url);
+        dest.writeString(this.nodeId);
+    }
+
+    public License() {
+    }
+
+    protected License(Parcel in) {
+        this.name = in.readString();
+        this.spdxId = in.readString();
+        this.key = in.readString();
+        this.url = in.readString();
+        this.nodeId = in.readString();
+    }
+
+    public static final Parcelable.Creator<License> CREATOR = new Parcelable.Creator<License>() {
+        @Override
+        public License createFromParcel(Parcel source) {
+            return new License(source);
+        }
+
+        @Override
+        public License[] newArray(int size) {
+            return new License[size];
+        }
+    };
 }
