@@ -31,4 +31,23 @@ public class AppRepositoryImpl implements AppRepository {
             }
         });
     }
+
+    @Override
+    public void searchRepositoriesByName(String textToSearch, final AppRepositoryListener listener) {
+
+        appDataSource.searchRepositoriesByName(textToSearch, new AppApiListener() {
+
+            @Override
+            public void onSuccess(Response<RepoListResponse> response) {
+
+                listener.onSuccess(response);
+            }
+
+            @Override
+            public void onFail(String message) {
+
+                listener.onFail(message);
+            }
+        });
+    }
 }

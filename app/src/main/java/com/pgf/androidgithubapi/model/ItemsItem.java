@@ -31,7 +31,7 @@ public class ItemsItem implements Parcelable {
     private String labelsUrl;
 
     @SerializedName("score")
-    private int score;
+    private double score;
 
     @SerializedName("subscribers_url")
     private String subscribersUrl;
@@ -284,11 +284,11 @@ public class ItemsItem implements Parcelable {
         return labelsUrl;
     }
 
-    public void setScore(int score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -906,7 +906,7 @@ public class ItemsItem implements Parcelable {
         dest.writeString(this.branchesUrl);
         dest.writeString(this.issueCommentUrl);
         dest.writeString(this.labelsUrl);
-        dest.writeInt(this.score);
+        dest.writeDouble(this.score);
         dest.writeString(this.subscribersUrl);
         dest.writeString(this.releasesUrl);
         dest.writeString(this.svnUrl);
@@ -985,7 +985,7 @@ public class ItemsItem implements Parcelable {
         this.branchesUrl = in.readString();
         this.issueCommentUrl = in.readString();
         this.labelsUrl = in.readString();
-        this.score = in.readInt();
+        this.score = in.readDouble();
         this.subscribersUrl = in.readString();
         this.releasesUrl = in.readString();
         this.svnUrl = in.readString();
