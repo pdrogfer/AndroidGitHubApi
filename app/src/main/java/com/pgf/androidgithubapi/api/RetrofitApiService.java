@@ -17,4 +17,12 @@ public interface RetrofitApiService {
             @Query("per_page") Integer pageSize
     );
 
+    @GET("repositories")
+    Call<RepoListResponse> searchReposByName(
+            @Query("q") String searchParameter,
+            @Query("sort") String sortParameter,
+            @Query("order") String sortOrder,
+            @Query("page") Integer pageNumber,
+            @Query("per_page") Integer pageSize
+    );
 }

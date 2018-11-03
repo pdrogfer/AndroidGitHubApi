@@ -29,10 +29,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // Binding
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
     // Dependency injection
     annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
     implementation 'com.google.dagger:dagger:2.15'
@@ -41,4 +37,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'javax.annotation:javax.annotation-api:1.2'
+
+    // Search Bar
+    implementation 'com.github.mancj:MaterialSearchBar:0.7.6'
 }
