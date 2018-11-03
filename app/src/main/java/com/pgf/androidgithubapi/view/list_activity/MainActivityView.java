@@ -2,8 +2,10 @@ package com.pgf.androidgithubapi.view.list_activity;
 
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.pgf.androidgithubapi.R;
@@ -13,9 +15,11 @@ import com.pgf.androidgithubapi.view.detail_activity.DetailActivity;
 
 import java.util.ArrayList;
 
+import static android.widget.LinearLayout.VERTICAL;
+
 public class MainActivityView implements OnRepoItemClickListener {
 
-    private static final String REPO_INTENT_KEY = "REPO_INTENT_KEY";
+    public static final String REPO_INTENT_KEY = "REPO_INTENT_KEY";
 
     MainActivity activity;
     ArrayList<ItemsItem> repoList;
@@ -35,6 +39,7 @@ public class MainActivityView implements OnRepoItemClickListener {
 
         rvRepositoriesList.setLayoutManager(new LinearLayoutManager(activity));
         rvRepositoriesList.setAdapter(repositoriesAdapter);
+        rvRepositoriesList.addItemDecoration(new DividerItemDecoration(activity.getApplicationContext(), VERTICAL));
 
         Toast.makeText(activity, "first repo name " + repoList.get(0).getName(), Toast.LENGTH_SHORT).show();
     }
