@@ -14,9 +14,9 @@ public class AppRepositoryImpl implements AppRepository {
     }
 
     @Override
-    public void getGitHubRepositories(final AppRepositoryListener listener) {
+    public void getGitHubRepositories(int page, final AppRepositoryListener listener) {
 
-        appDataSource.getGitHubRepositories(new AppApiListener() {
+        appDataSource.getGitHubRepositories(page, new AppApiListener() {
 
             @Override
             public void onSuccess(Response<RepoListResponse> response) {
@@ -33,9 +33,9 @@ public class AppRepositoryImpl implements AppRepository {
     }
 
     @Override
-    public void searchRepositoriesByName(String textToSearch, final AppRepositoryListener listener) {
+    public void searchRepositoriesByName(String textToSearch, int page, final AppRepositoryListener listener) {
 
-        appDataSource.searchRepositoriesByName(textToSearch, new AppApiListener() {
+        appDataSource.searchRepositoriesByName(textToSearch, page, new AppApiListener() {
 
             @Override
             public void onSuccess(Response<RepoListResponse> response) {

@@ -18,7 +18,7 @@ public class AppDataSourceImplCloud implements AppDataSource {
     private RetrofitApiService retrofitApiService;
 
     @Override
-    public void getGitHubRepositories(final AppApiListener listener) {
+    public void getGitHubRepositories(int page, final AppApiListener listener) {
 
         Retrofit retrofitInstance = new Retrofit
                 .Builder()
@@ -33,13 +33,18 @@ public class AppDataSourceImplCloud implements AppDataSource {
                 "is:public",
                 "created",
                 "desc",
-                1,
+                page,
                 20
         );
         dataCall.enqueue(new Callback<RepoListResponse>() {
 
             @Override
             public void onResponse(Call<RepoListResponse> call, Response<RepoListResponse> response) {
+
+                if (response == null) {
+                    listener.onFail("Error getting repositories");
+                    return;
+                }
 
                 Log.i(TAG, "onResponse: " + response.body().toString());
                 listener.onSuccess(response);
@@ -55,7 +60,7 @@ public class AppDataSourceImplCloud implements AppDataSource {
     }
 
     @Override
-    public void searchRepositoriesByName(String textToSearch, final AppApiListener listener) {
+    public void searchRepositoriesByName(String textToSearch, int page, final AppApiListener listener) {
 
         Retrofit retrofitInstance = new Retrofit
                 .Builder()
@@ -71,13 +76,18 @@ public class AppDataSourceImplCloud implements AppDataSource {
                 searchParameter,
                 "created",
                 "desc",
-                1,
+                page,
                 20
         );
         dataCall.enqueue(new Callback<RepoListResponse>() {
 
             @Override
             public void onResponse(Call<RepoListResponse> call, Response<RepoListResponse> response) {
+
+                if (response == null) {
+                    listener.onFail("Error getting repositories");
+                    return;
+                }
 
                 Log.i(TAG, "onResponse: " + response.body().toString());
                 listener.onSuccess(response);
