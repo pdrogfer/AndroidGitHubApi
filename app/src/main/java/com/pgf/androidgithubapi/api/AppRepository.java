@@ -2,7 +2,7 @@ package com.pgf.androidgithubapi.api;
 
 public interface AppRepository {
 
-    void getGitHubRepositories(AppRepositoryListener listener);
+    void getGitHubRepositories(int page, AppRepositoryListener listener);
 
-    void searchRepositoriesByName(String textToSearch, AppRepositoryListener listener);
+    void searchRepositoriesByName(String textToSearch, int page, AppRepositoryListener listener);
 }

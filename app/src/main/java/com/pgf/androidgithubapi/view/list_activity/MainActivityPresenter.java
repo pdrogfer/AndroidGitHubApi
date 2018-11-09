@@ -26,7 +26,7 @@ public class MainActivityPresenter implements MainActivityView.Actions {
         view = new MainActivityView(mainActivity, this);
         repository = new AppRepositoryImpl(new AppDataSourceImplCloud());
 
-        loadData();
+        loadData(1);
     }
 
     public void onCreate() {
@@ -39,15 +39,15 @@ public class MainActivityPresenter implements MainActivityView.Actions {
         view.initUi();
     }
 
-    private void loadData() {
+    private void loadData(int page) {
 
-        repository.getGitHubRepositories(new AppRepositoryListener() {
+        repository.getGitHubRepositories(page, new AppRepositoryListener() {
 
             @Override
             public void onSuccess(Response<RepoListResponse> response) {
 
                 Log.i(TAG, "onSuccess: " + response.body());
-                view.paintData(response.body());
+                view.paintData(false, response.body());
             }
 
             @Override
@@ -59,15 +59,15 @@ public class MainActivityPresenter implements MainActivityView.Actions {
     }
 
     @Override
-    public void startSearch(String textSearch) {
+    public void startSearch(String textSearch, int page) {
 
-        repository.searchRepositoriesByName(textSearch, new AppRepositoryListener() {
+        repository.searchRepositoriesByName(textSearch, page, new AppRepositoryListener() {
 
             @Override
             public void onSuccess(Response<RepoListResponse> response) {
 
                 Log.i(TAG, "onSuccess: " + response.body());
-                view.paintSearchResults(response.body());
+                view.paintData(true, response.body());
             }
 
             @Override
@@ -76,5 +76,11 @@ public class MainActivityPresenter implements MainActivityView.Actions {
                 view.showMessage(message);
             }
         });
+    }
+
+    @Override
+    public void getData(int page) {
+
+        loadData(page);
     }
 }
